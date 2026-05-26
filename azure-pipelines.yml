@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: Maven@3
+- task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean package'
@@ -14,3 +14,9 @@ steps:
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
     mavenVersionOption: 'Default'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'target'
+    ArtifactName: 'DemoAppArtifact'
+    publishLocation: 'Container'
